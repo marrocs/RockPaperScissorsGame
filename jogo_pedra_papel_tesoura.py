@@ -1,7 +1,4 @@
-'''Jogo:
-
-pedra papel tesoura
-'''
+'''Jogo: pedra papel tesoura'''
 import random
 import placar
 
@@ -13,48 +10,46 @@ def main() -> None:
 
 
 def game():
-    acao = int(input('Digite 1 para escolher pedra, 2 para papel, ou, 3 para tesoura: '))
+    acao = int(input('press 1 to choose rock, 2 for paper, or 3 for scissor: '))
     contra = random.randint(1, 3)
 
-    dict = {1: 'pedra', 2: 'papel', 3: 'tesoura'}
+    dict = {1: 'rock', 2: 'paper', 3: 'scissor'}
 
-    print(f'Você escolheu: {dict[acao]}')
-    print(f'O seu oponente escolheu: {dict[contra]}')
+    print(f'You choose: {dict[acao]}'
+          f'\nYour opponent choose: {dict[contra]}')
 
-    if acao == 1 and contra == 1 or acao == 2 and contra == 2 or acao == 3 and contra == 3:
-        print('Vocês empataram!')
+    if acao == contra:
+        print('You tie!')
         placar.emp += 1
-        resp = input('Deseja jogar mais uma partida? (s/n)')
+        resp = input('One more game? (y/n)')
 
-        if resp == 's':
+        if resp == 'y':
             game()
         else:
-            print(f'Placar: \n\nVitorias: {placar.vit}, \nEmpates: {placar.emp}, \nDerrotas: {placar.der}')
-            print('\nFIM DE JOGO')
+            print(f'Score: \n\nWin: {placar.vit}, \nTie: {placar.emp}, \nLoss: {placar.der}'
+                  f'\nEND GAME')
 
-    elif acao == 1 and contra == 2 or acao == 2 and contra == 3 or acao == 3 and contra == 1:
-        print('Você perdeu!')
+    elif (acao == 1 and contra == 2) or (acao == 2 and contra == 3) or (acao == 3 and contra == 1):
+        print('You lost!')
         placar.der += 1
-        print('Deseja jogar mais uma partida? (s/n)')
-        resp = input(' ')
+        resp = input('One more game? (y/n)')
 
-        if resp == 's':
+        if resp == 'y':
             game()
         else:
-            print(f'Placar: \n\nVitorias: {placar.vit}, \nEmpates: {placar.emp}, \nDerrotas: {placar.der}')
-            print('\nFIM DE JOGO')
+            print(f'Score: \n\nWin: {placar.vit}, \nTie: {placar.emp}, \nLoss: {placar.der}'
+                  f'\nEND GAME')
 
     else:
-        print('Você venceu!')
+        print('You win!')
         placar.vit += 1
-        print('Deseja jogar mais uma partida? (s/n)')
-        resp = input(' ')
+        resp = input('One more game? (y/n)')
 
-        if resp == 's':
+        if resp == 'y':
             game()
         else:
-            print(f'Placar: \n\nVitorias: {placar.vit}, \nEmpates: {placar.emp}, \nDerrotas: {placar.der}')
-            print('\nFIM DE JOGO')
+            print(f'Score: \n\nWin: {placar.vit}, \nTie: {placar.emp}, \nLoss: {placar.der}'
+                  f'\nEND GAME')
 
 
 if __name__ == '__main__':
